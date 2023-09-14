@@ -27,7 +27,7 @@ function setAlarm() {
     const alarmTime = new Date();
     alarmTime.setHours(parseInt(hours, 10));
     alarmTime.setMinutes(parseInt(minutes, 10));
-    alarmTime.setSeconds(parseInt(seconds, 10));
+    alarmTime.setSeconds(0);
     alarmTime = alarmTime.getTime();
     isAlarmActive = true;
 }
