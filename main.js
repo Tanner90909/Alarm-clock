@@ -37,6 +37,18 @@ function setAlarm() {
         //check if alarmTime == currentTime
         //if they match, trigger the alarm
         //if not, continue checking
+function checkAlarm() {
+    if (isAlarmActive) {
+        const currentTime = new Date();
+        if (alarmTime <= currentTime.getTime()) {
+            triggerAlarm();
+        }
+    }
+}
+
+function triggerAlarm() {
+    
+}
 //create function to turn off alarm
     //if isAlarmActive is true, set isAlarmActive to false
     //stop any alarm that is ringing
