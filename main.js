@@ -13,6 +13,7 @@ function updateClockTime () {
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
     const currentTimeString = `${hours}:${minutes}:${seconds}`;
     currentTimeElement.textContent = currentTimeString;
+    checkAlarm();
 }
 
 //periodically update the current time based on an interval
