@@ -3,6 +3,8 @@ const currentTime = new Date();
 const alarmTime = new Date();
 let isAlarmActive = false;
 // create a function to update the current time and display it
+    //get the current time and store it in currentTime variable
+    //Display current time on the webpage
 function updateClockTime () {
     const currentTimeElement = document.getElementById("current-time");
     const currentTime = new Date();
@@ -14,12 +16,21 @@ function updateClockTime () {
 }
 setInterval(updateClockTime, 1000);
 updateClockTime();
-    //get the current time and store it in currentTime variable
-    //Display current time on the webpage
 //create a function to set the alarm
     //gather the desired alarm time from the user input element and store it in alarmTime variable
     //convert the alarm time to a comparable format(seconds since midnight)
     //set isAlarmActive variable to true to indicate the alarm is set
+function setAlarm() {
+    const alarmInputElement = document.getElementById("alarm-time");
+    const alarmTimeInput = alarmInputElement.value;
+    const [hours, minutes] = alarmTimeInput.split(":");
+    const alarmTime = new Date();
+    alarmTime.setHours(parseInt(hours, 10));
+    alarmTime.setMinutes(parseInt(minutes, 10));
+    alarmTime.setSeconds(parseInt(seconds, 10));
+    alarmTime = alarmTime.getTime();
+    isAlarmActive = true;
+}
 //create a function to check if the alarm should go off
     //IF isAlarmActive is true
         //get the currentTime
