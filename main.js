@@ -4,14 +4,15 @@ const alarmTime = new Date();
 let isAlarmActive = false;
 // create a function to update the current time and display it
 function updateClockTime () {
-    const currentTimeElement = document.getElementByID("current-time");
-    const hours = currentTime.getHours().toString();
-    const minutes = currentTime.getMinutes().toString();
-    const seconds = currentTime.getSeconds().toString();
-    const currentTimeString = "${hours}:${minutes}:${seconds}";
+    const currentTimeElement = document.getElementById("current-time");
+    const hours = currentTime.getHours().toString().padStart(2, "0");
+    const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+    const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+    const currentTimeString = `${hours}:${minutes}:${seconds}`;
     currentTimeElement.textContent = currentTimeString;
 }
 setInterval(updateClockTime, 1000);
+updateClockTime();
     //get the current time and store it in currentTime variable
     //Display current time on the webpage
 //create a function to set the alarm
