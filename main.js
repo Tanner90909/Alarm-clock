@@ -1,5 +1,17 @@
 // create variable for current time, alarm time, and a flag to indicate if the alarm is active
+const currentTime = new Date();
+const alarmTime = new Date();
+let isAlarmActive = false;
 // create a function to update the current time and display it
+function updateClockTime () {
+    const currentTimeElement = document.getElementByID("current-time");
+    const hours = currentTime.getHours().toString();
+    const minutes = currentTime.getMinutes().toString();
+    const seconds = currentTime.getSeconds().toString();
+    const currentTimeString = "${hours}:${minutes}:${seconds}";
+    currentTimeElement.textContent = currentTimeString;
+}
+setInterval(updateClockTime, 1000);
     //get the current time and store it in currentTime variable
     //Display current time on the webpage
 //create a function to set the alarm
