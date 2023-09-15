@@ -45,7 +45,11 @@ function setAlarm() {
 function checkAlarm() {
     if (isAlarmActive) {
         const currentTime = new Date();
-        if (alarmTime.getTime() == currentTime.getTime()) {
+        const currentHours = currentTime.getHours();
+        const currentMinutes = currentTime.getMinutes();
+        const alarmHours = alarmTime.getHours();
+        const alarmMinutes = alarmTime.getMinutes();
+        if (currentHours === alarmHours && currentMinutes === alarmMinutes) {
             triggerAlarm();
         }
     }
