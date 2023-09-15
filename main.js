@@ -45,7 +45,7 @@ function setAlarm() {
 function checkAlarm() {
     if (isAlarmActive) {
         const currentTime = new Date();
-        if (alarmTime == currentTime) {
+        if (alarmTime.getTime() == currentTime.getTime()) {
             triggerAlarm();
         }
     }
