@@ -29,11 +29,32 @@ updateClockTime();
 function setAlarm() {
     const alarmInputElement = document.getElementById("alarm-time");
     const alarmTimeInput = alarmInputElement.value;
-    const [hours, minutes] = alarmTimeInput.split(":");
-    alarmTime.setHours(parseInt(hours, 10));
-    alarmTime.setMinutes(parseInt(minutes, 10));
+    const parsedTime = parse12HourTime(alarmTimeInput);
+
+    alarmTime.setHours(parsedTime.hours);
+    alarmTime.setMinutes(parsedTime.minutes);
     alarmTime.setSeconds(0);
     isAlarmActive = true;
+}
+
+function parse12HourTime(timeString){
+    const [time, period] = timeString.split(' ');
+
+    const [hours, minutes] = time.split(':');
+    let parsedHours = parseInt(hours, 10);
+
+    if (period.toLowerCase() === 'pm' && parsedHours !== 12){
+        parsedHours += 12;
+    }
+
+    if (period.toLowerCase() === 'am' && parsedHours === 12){
+        parsedHours = 0;
+    }
+
+    return {
+        hours: parsedHours,
+        minutes: parseInt(minutes, 10),
+    };
 }
 
 //create a function to check if the alarm should go off
