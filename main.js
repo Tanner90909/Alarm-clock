@@ -2,6 +2,26 @@
 const currentTime = new Date();
 let alarmTime = new Date();
 let isAlarmActive = false;
+
+//create a function to check if the alarm should go off
+    //IF isAlarmActive is true
+        //get the currentTime
+        //check if alarmTime == currentTime
+        //if they match, trigger the alarm
+        //if not, continue checking
+function checkAlarm() {
+    if (isAlarmActive) {
+        const currentTime = new Date();
+        const currentHours = currentTime.getHours();
+        const currentMinutes = currentTime.getMinutes();
+        const alarmHours = alarmTime.getHours();
+        const alarmMinutes = alarmTime.getMinutes();
+    if (currentHours === alarmHours && currentMinutes === alarmMinutes) {
+        triggerAlarm();
+        }
+    }
+}
+
 // create a function to update the current time and display it
     //get the current time and store it in currentTime variable
     //Display current time on the webpage
@@ -37,17 +57,17 @@ function setAlarm() {
     isAlarmActive = true;
 }
 
-function parse12HourTime(timeString){
-    const [time, period] = timeString.split(' ');
+function parse12HourTime(currentTimeString){
+    const [time, period] = currentTimeString.split(' ');
 
     const [hours, minutes] = time.split(':');
     let parsedHours = parseInt(hours, 10);
 
-    if (period.toLowerCase() === 'pm' && parsedHours !== 12){
+    if (period === 'pm' && parsedHours !== 12){
         parsedHours += 12;
     }
 
-    if (period.toLowerCase() === 'am' && parsedHours === 12){
+    if (period === 'am' && parsedHours === 12){
         parsedHours = 0;
     }
 
@@ -55,25 +75,6 @@ function parse12HourTime(timeString){
         hours: parsedHours,
         minutes: parseInt(minutes, 10),
     };
-}
-
-//create a function to check if the alarm should go off
-    //IF isAlarmActive is true
-        //get the currentTime
-        //check if alarmTime == currentTime
-        //if they match, trigger the alarm
-        //if not, continue checking
-function checkAlarm() {
-    if (isAlarmActive) {
-        const currentTime = new Date();
-        const currentHours = currentTime.getHours();
-        const currentMinutes = currentTime.getMinutes();
-        const alarmHours = alarmTime.getHours();
-        const alarmMinutes = alarmTime.getMinutes();
-        if (currentHours === alarmHours && currentMinutes === alarmMinutes) {
-            triggerAlarm();
-        }
-    }
 }
 
 function triggerAlarm() {
